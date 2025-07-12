@@ -20,10 +20,12 @@ const indexHtmlPath = resolve(
 );
 
 export default {
+  rootDir: '.',
   nodeResolve: {
     exportConditions: mode === 'dev' ? ['development'] : [],
   },
   preserveSymlinks: true,
+  watch: true,
   plugins: [
     legacyPlugin({
       polyfills: {

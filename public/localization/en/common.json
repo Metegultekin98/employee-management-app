@@ -1,0 +1,18 @@
+{
+  "add": "Add",
+  "cancel": "Cancel",
+  "close": "Close",
+  "confirm": "Confirm",
+  "delete": "Delete",
+  "edit": "Edit",
+  "error": "Error",
+  "loading": "Loading",
+  "no": "No",
+  "ok": "OK",
+  "save": "Save",
+  "search": "Search",
+  "mainLayout": {
+    "employees": "Employees",
+    "addEmployee": "Add Employee"
+  }
+}

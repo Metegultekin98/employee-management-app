@@ -1,0 +1,18 @@
+{
+  "add": "Ekle",
+  "cancel": "İptal",
+  "close": "Kapat",
+  "confirm": "Onayla",
+  "delete": "Sil",
+  "edit": "Düzenle",
+  "error": "Hata",
+  "loading": "Yükleniyor",
+  "no": "Hayır",
+  "ok": "Tamam",
+  "save": "Kaydet",
+  "search": "Ara",
+  "mainLayout": {
+    "employees": "Çalışanlar",
+    "addEmployee": "Çalışan Ekle"
+  }
+}

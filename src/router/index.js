@@ -1,0 +1,39 @@
+/** @typedef {import('@vaadin/router').Route} Route */
+import {loadJsonFile} from '../localization/index.js';
+
+/** @type {ReadonlyArray<Route>} */
+export const routes = [
+  {
+    path: '/',
+    component: 'main-layout',
+    action: async () => {
+      await Promise.all([
+        import('../layouts/main-layout.js'),
+        loadJsonFile('en', 'common'),
+      ]);
+    },
+    children: [
+      {
+        path: 'employees',
+        component: 'employees-page',
+        action: async () => {
+          await import('../pages/employees/employees-page.js');
+        },
+      },
+      {
+        path: 'employees/add',
+        component: 'employee-add-page',
+        action: async () => {
+          await import('../pages/employees/employee-add-page.js');
+        },
+      },
+      {
+        path: 'employees/:id',
+        component: 'employee-edit-page',
+        action: async () => {
+          await import('../pages/employees/employee-edit-page.js');
+        },
+      },
+    ],
+  },
+];

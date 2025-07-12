@@ -6,7 +6,6 @@
 
 import {legacyPlugin} from '@web/dev-server-legacy';
 import {playwrightLauncher} from '@web/test-runner-playwright';
-import { v8CoveragePlugin } from '@web/test-runner-coverage-v8';
 
 const mode = process.env.MODE || 'dev';
 if (!['dev', 'prod'].includes(mode)) {
@@ -95,7 +94,7 @@ export default {
   testFramework: {
     // https://mochajs.org/api/mocha
     config: {
-      ui: 'tdd',
+      ui: 'bdd',
       timeout: '60000',
     },
   },
@@ -116,15 +115,6 @@ export default {
           },
         ],
       },
-    }),
-    v8CoveragePlugin({
-      exclude: [
-        '**/node_modules/**/*',
-        '**/*.test.js',
-        '**/test/**/*',
-        '**/template.js',
-        '**/styles.js',
-      ],
     }),
   ],
   coverage: true,

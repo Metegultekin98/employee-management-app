@@ -14,6 +14,13 @@ export const routes = [
     },
     children: [
       {
+        path: '',
+        component: 'home-page',
+        action: async () => {
+          await import('../pages/home/home-page.js');
+        },
+      },
+      {
         path: 'employees',
         component: 'employees-page',
         action: async () => {

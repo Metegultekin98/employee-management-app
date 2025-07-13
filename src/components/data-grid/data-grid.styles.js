@@ -3,7 +3,7 @@ import {css} from 'lit';
 export const dataGridStyles = css`
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
     gap: 3rem 8rem;
   }
 

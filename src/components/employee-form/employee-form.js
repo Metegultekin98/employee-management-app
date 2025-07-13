@@ -225,7 +225,7 @@ export class EmployeeForm extends LitElement {
           name=${name}
           .value=${value ?? ''}
           style="margin-top: 0.5rem;"
-          maxlength="14"
+          maxlength=${isPhone ? '14' : '100'}
           @input=${isPhone ? this.handlePhoneInput : null}
         />
         ${this._errors[name]

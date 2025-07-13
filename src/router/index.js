@@ -8,7 +8,7 @@ export const routes = [
     component: 'main-layout',
     action: async () => {
       await Promise.all([
-        import('../layouts/main-layout.js'),
+        import('../layouts/main-layout/main-layout.js'),
         loadJsonFile('en', 'common'),
       ]);
     },
@@ -17,24 +17,27 @@ export const routes = [
         path: 'employees',
         component: 'employees-page',
         action: async () => {
-          await import('../pages/employees/employees-page.js');
+          await import('../pages/employees/employees-page/employees-page.js');
         },
       },
-      // ,
-      // {
-      //   path: 'employees/add',
-      //   component: 'employee-add-page',
-      //   action: async () => {
-      //     await import('../pages/employees/employee-add-page.js');
-      //   },
-      // },
-      // {
-      //   path: 'employees/:id',
-      //   component: 'employee-edit-page',
-      //   action: async () => {
-      //     await import('../pages/employees/employee-edit-page.js');
-      //   },
-      // },
+      {
+        path: 'employees/add',
+        component: 'employee-add-page',
+        action: async () => {
+          await import(
+            '../pages/employees/employee-add-page/employee-add-page.js'
+          );
+        },
+      },
+      {
+        path: 'employees/:id',
+        component: 'employee-edit-page',
+        action: async () => {
+          await import(
+            '../pages/employees/employee-edit-page/employee-edit-page.js'
+          );
+        },
+      },
     ],
   },
 ];

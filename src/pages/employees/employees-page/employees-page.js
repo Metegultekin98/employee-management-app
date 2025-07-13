@@ -1,15 +1,17 @@
-import {css, html, LitElement} from 'lit';
-import {t as defaultT} from '../../localization/index.js';
-import '../../components/data-table/data-table.js';
-import '../../components/data-grid/data-grid.js';
-import '../../components/pagination-controls/pagination-controls.js';
-import '../../components/modal-dialog/modal-dialog.js';
+import {html, LitElement} from 'lit';
+import {t as defaultT} from '../../../localization/index.js';
+import '../../../components/data-table/data-table.js';
+import '../../../components/data-grid/data-grid.js';
+import '../../../components/pagination-controls/pagination-controls.js';
+import '../../../components/modal-dialog/modal-dialog.js';
 import {
   loadEmployees,
   removeEmployee,
-} from '../../store/employees/employeesThunks.js';
-import {store} from '../../store/index.js';
+} from '../../../store/employees/employeesThunks.js';
+import {store} from '../../../store/index.js';
 import {connect} from 'pwa-helpers';
+import {router} from '../../../main.js';
+import {employeesPageStyles} from './employees-page.styles.js';
 
 export class EmployeesPage extends connect(store)(LitElement) {
   static properties = {
@@ -25,31 +27,7 @@ export class EmployeesPage extends connect(store)(LitElement) {
     modalMessage: {type: String},
   };
 
-  static styles = css`
-    main h2 {
-      margin: 1rem 0 1rem 0;
-      font-weight: 500;
-      color: var(--color-primary);
-    }
-
-    .selections {
-      display: flex;
-      gap: 0.5rem;
-    }
-
-    .selections button {
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      padding: 0.25rem;
-      opacity: 0.5;
-      transition: all 0.25s ease-in-out;
-    }
-
-    .selections button:hover {
-      opacity: 1;
-    }
-  `;
+  static styles = employeesPageStyles;
 
   constructor() {
     super();
@@ -92,8 +70,7 @@ export class EmployeesPage extends connect(store)(LitElement) {
   }
 
   handleSelectionChanged(event) {
-    const selectedRows = event.detail.selectedRows;
-    this.selectedRows = selectedRows;
+    this.selectedRows = event.detail.selectedRows;
   }
 
   get rowsPerPage() {
@@ -110,9 +87,7 @@ export class EmployeesPage extends connect(store)(LitElement) {
   }
 
   _onEdit(row) {
-    this.dispatchEvent(
-      new CustomEvent('edit', {detail: row, bubbles: true, composed: true})
-    );
+    router.constructor.go('/employees/' + row.id);
   }
 
   handleDelete() {
@@ -129,6 +104,55 @@ export class EmployeesPage extends connect(store)(LitElement) {
       }
     );
     this.isModalOpen = true;
+  }
+
+  renderViewToggles() {
+    return html`
+      <div class="selections">
+        ${['list', 'grid'].map(
+          (type) => html`
+            <button
+              @click=${() => {
+                this.view = type;
+                this.currentPage = 1;
+              }}
+              style="${this.view === type ? 'opacity: 1;' : ''}"
+            >
+              <img
+                src="/public/icons/${type}.png"
+                width="24"
+                height="24"
+                alt="${type} view"
+              />
+            </button>
+          `
+        )}
+      </div>
+    `;
+  }
+
+  renderTableOrGrid(columns) {
+    return this.view === 'list'
+      ? html`
+          <data-table
+            .columns=${columns}
+            .rows=${this.paginatedEmployees}
+            .selectedRows=${this.selectedRows}
+            selectable
+            multiSelect
+            @selection-changed=${this.handleSelectionChanged}
+          ></data-table>
+        `
+      : html`
+          <data-grid
+            .columns=${columns}
+            .rows=${this.paginatedEmployees}
+            .selectedRows=${this.selectedRows}
+            selectable
+            multiSelect
+            @selection-changed=${this.handleSelectionChanged}
+          ></data-grid>
+        `;
   }
 
   render() {
@@ -168,7 +192,7 @@ export class EmployeesPage extends connect(store)(LitElement) {
         key: 'actions',
         label: translate.headers.actions,
         hideLabel: true,
-        render: (row) => html`<div
+        render: (row) => html` <div
           style="
           display: flex; 
           gap: 0.5rem; 
@@ -249,55 +273,10 @@ export class EmployeesPage extends connect(store)(LitElement) {
         >
           <h2>${translate.title}</h2>
 
-          <div class="selections" style="display: flex; gap: 0.5rem;">
-            <button
-              @click=${() => {
-                this.view = 'list';
-                this.currentPage = 1;
-              }}
-              style="${this.view === 'list' ? 'opacity: 1;' : ''}"
-            >
-              <img
-                src="/public/icons/list.png"
-                width="24"
-                height="24"
-                alt="List View"
-              />
-            </button>
-            <button
-              @click=${() => {
-                this.view = 'grid';
-                this.currentPage = 1;
-              }}
-              style="${this.view === 'grid' ? 'opacity: 1;' : ''}"
-            >
-              <img
-                src="/public/icons/grid.png"
-                width="24"
-                height="24"
-                alt="List View"
-              />
-            </button>
-          </div>
+          ${this.renderViewToggles()}
         </div>
 
-        ${this.view === 'list'
-          ? html`<data-table
-              .columns=${columns}
-              .rows=${this.paginatedEmployees}
-              .selectedRows=${this.selectedRows}
-              selectable
-              multiSelect
-              @selection-changed=${this.handleSelectionChanged}
-            ></data-table>`
-          : html`<data-grid
-              .columns=${columns}
-              .rows=${this.paginatedEmployees}
-              .selectedRows=${this.selectedRows}
-              selectable
-              multiSelect
-              @selection-changed=${this.handleSelectionChanged}
-            ></data-grid>`}
+        ${this.renderTableOrGrid(columns)}
         <pagination-controls
           .totalItems=${this.employees.length}
           .itemsPerPage=${this.rowsPerPage}
@@ -319,15 +298,15 @@ export class EmployeesPage extends connect(store)(LitElement) {
         <button
           @click=${() => this.handleDelete()}
           style="
-          width: 100%; 
-          padding: 0.5rem 0; 
-          border: none; 
-          background-color: var(--color-primary); 
-          color: white; 
-          border-radius: 6px; 
-          cursor: pointer;
-          font-family: 'Poppins', sans-serif; 
-          font-weight: 500;"
+            width: 100%; 
+            padding: 0.5rem 0; 
+            border: none; 
+            background-color: var(--color-primary); 
+            color: white; 
+            border-radius: 6px; 
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif; 
+            font-weight: 500;"
         >
           ${this.common.proceed}
         </button>

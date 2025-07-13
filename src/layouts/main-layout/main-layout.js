@@ -1,73 +1,32 @@
-import {t as defaultT} from '../localization/index.js';
-import {css, html, LitElement} from 'lit';
-import '../components/language-switcher/language-switcher.js';
+import {t as defaultT} from '../../localization/index.js';
+import {html, LitElement} from 'lit';
+import {mainLayoutStyles} from './main-layout.styles.js';
+import '../../components/language-switcher/language-switcher.js';
 
 export class MainLayout extends LitElement {
   static properties = {
     navigation: {type: Object},
     t: {type: Function},
+    currentPath: {type: String},
   };
 
-  static styles = css`
-    nav {
-      padding: 0.75rem;
-      background: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: fixed;
-      z-index: 10;
-      top: 0;
-      left: 0;
-      right: 0;
-    }
-    main {
-      padding: 4.5rem 2rem 2rem 2rem;
-      background: var(--color-background);
-      min-height: 100vh;
-    }
-    nav .logo {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    nav .logo img {
-      height: 32px;
-      border-radius: 4px;
-    }
-    nav .logo-text {
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--color-text);
-    }
-    nav a {
-      text-decoration: none;
-      color: var(--color-primary);
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      opacity: 0.5;
-      transition: all 0.25s ease-in-out;
-    }
-    nav a:hover {
-      opacity: 1;
-    }
-    nav .links {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-  `;
+  static styles = mainLayoutStyles;
 
   constructor() {
     super();
     this.navigation = {};
     this.t = defaultT;
+    this.currentPath = window.location.pathname;
   }
 
   connectedCallback() {
     super.connectedCallback();
     this.loadTranslations();
+
+    this._onPopState = () => {
+      this.currentPath = window.location.pathname;
+    };
+    window.addEventListener('popstate', this._onPopState);
 
     this.langObserver = new MutationObserver(() => this.loadTranslations());
     this.langObserver.observe(document.documentElement, {
@@ -77,6 +36,7 @@ export class MainLayout extends LitElement {
   }
 
   disconnectedCallback() {
+    window.removeEventListener('popstate', this._onPopState);
     this.langObserver?.disconnect();
     super.disconnectedCallback();
   }
@@ -87,8 +47,8 @@ export class MainLayout extends LitElement {
 
   render() {
     const nav = this.navigation || {};
-    const current = window.location.pathname;
-    const hover = (link) => (current === link ? 'opacity: 1;' : '');
+    const hover = (link) => (this.currentPath === link ? 'opacity: 1;' : '');
+
     return html`
       <nav>
         <div class="logo">
@@ -96,7 +56,7 @@ export class MainLayout extends LitElement {
           <span class="logo-text">ING</span>
         </div>
         <div class="links">
-          <a href="/employees" style="${hover('/employees')}">
+          <a href="/employees" style=${hover('/employees')}>
             <img
               src="/public/icons/employee.png"
               alt="Employees Icon"
@@ -105,10 +65,10 @@ export class MainLayout extends LitElement {
             />
             ${nav.employees}
           </a>
-          <a href="/employees/add" style="${hover('/employees/add')}">
+          <a href="/employees/add" style=${hover('/employees/add')}>
             <img
               src="/public/icons/add.png"
-              alt="Employees Icon"
+              alt="Add Icon"
               width="24"
               height="24"
             />

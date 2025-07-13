@@ -2,27 +2,19 @@ import {
   getCurrentLang as defaultGetLang,
   setLang as defaultSetLang,
 } from '../../localization/index.js';
-import {css, html, LitElement} from 'lit';
+import {html, LitElement} from 'lit';
+import {languageSwitcherStyle} from './language-switcher.styles.js';
 
 export class LanguageSwitcher extends LitElement {
   static properties = {
     lang: {type: String},
-    getLang: {type: Function},
-    setLang: {type: Function},
   };
 
-  static styles = css`
-    button {
-      border: none;
-      background: white;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  `;
+  static styles = languageSwitcherStyle;
+
+  #onLangChanged = (e) => {
+    this.lang = e.detail;
+  };
 
   constructor() {
     super();
@@ -34,29 +26,29 @@ export class LanguageSwitcher extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.lang = this.getLang();
-    window.addEventListener('lang-changed', this._onLangChanged);
+    window.addEventListener('lang-changed', this.#onLangChanged);
   }
 
   disconnectedCallback() {
-    window.removeEventListener('lang-changed', this._onLangChanged);
+    window.removeEventListener('lang-changed', this.#onLangChanged);
     super.disconnectedCallback();
   }
 
-  _onLangChanged = (e) => {
-    this.lang = e.detail;
-  };
-
   toggleLanguage() {
-    const newLang = this.lang === 'en' ? 'tr' : 'en';
-    this.setLang(newLang);
+    const langs = ['en', 'tr'];
+    const currentIndex = langs.indexOf(this.lang);
+    const nextLang = langs[(currentIndex + 1) % langs.length];
+    this.setLang(nextLang);
   }
 
   render() {
+    const otherLang = this.lang === 'en' ? 'tr' : 'en';
+
     return html`
       <button @click=${this.toggleLanguage}>
         <img
-          src="/public/icons/flags/${this.lang === 'en' ? 'tr' : 'en'}.png"
-          alt="Language Icon"
+          src="/public/icons/flags/${otherLang}.png"
+          alt="Switch to ${otherLang}"
           width="24"
           height="16"
         />

@@ -1,0 +1,19 @@
+{
+  "title": "Çalışan Ekle",
+  "inputs": {
+    "firstName": "Ad",
+    "lastName": "Soyad",
+    "dateOfEmployment": "İşe Giriş Tarihi",
+    "dateOfBirth": "Doğum Tarihi",
+    "phone": "Telefon",
+    "email": "E-posta",
+    "department": "Departman",
+    "position": "Pozisyon"
+  },
+  "form": {
+    "required": " alanı gereklidir.",
+    "invalidEmail": "Geçersiz e-posta adresi.",
+    "invalidPhone": "Geçersiz telefon numarası.",
+    "pleaseSelect" : "Lütfen seçiniz"
+  }
+}

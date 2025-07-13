@@ -2,6 +2,7 @@ import {createSlice, nanoid} from '@reduxjs/toolkit';
 
 const initialState = {
   employees: [],
+  employee: {},
 };
 
 export const employeesSlice = createSlice({
@@ -11,15 +12,12 @@ export const employeesSlice = createSlice({
     setEmployees(state, action) {
       state.employees = action.payload;
     },
-    addEmployee: {
-      reducer(state, action) {
-        state.employees.push(action.payload);
-      },
-      prepare(employee) {
-        return {
-          payload: {id: nanoid(), ...employee},
-        };
-      },
+    setEmployee(state, action) {
+      const {id, ...employee} = action.payload;
+      state.employee = {...employee, id: id || nanoid()};
+    },
+    addEmployee(state, action) {
+      state.employees.push(action.payload);
     },
     updateEmployee(state, action) {
       const {id, changes} = action.payload;
@@ -32,6 +30,11 @@ export const employeesSlice = createSlice({
   },
 });
 
-export const {setEmployees, addEmployee, updateEmployee, deleteEmployee} =
-  employeesSlice.actions;
+export const {
+  setEmployees,
+  addEmployee,
+  updateEmployee,
+  deleteEmployee,
+  setEmployee,
+} = employeesSlice.actions;
 export default employeesSlice.reducer;

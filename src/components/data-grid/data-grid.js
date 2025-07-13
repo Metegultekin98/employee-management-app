@@ -1,4 +1,5 @@
-import {LitElement, html, css} from 'lit';
+import {LitElement, html} from 'lit';
+import {dataGridStyles} from './data-grid.styles.js';
 
 export class DataGrid extends LitElement {
   static properties = {
@@ -8,6 +9,8 @@ export class DataGrid extends LitElement {
     selectable: {type: Boolean},
     multiSelect: {type: Boolean},
   };
+
+  static styles = dataGridStyles;
 
   constructor() {
     super();
@@ -28,11 +31,9 @@ export class DataGrid extends LitElement {
     let updatedSelection;
 
     if (this.multiSelect) {
-      if (this.isSelected(row)) {
-        updatedSelection = this.selectedRows.filter((r) => r !== row);
-      } else {
-        updatedSelection = [...this.selectedRows, row];
-      }
+      updatedSelection = this.isSelected(row)
+        ? this.selectedRows.filter((r) => r !== row)
+        : [...this.selectedRows, row];
     } else {
       updatedSelection = this.isSelected(row) ? [] : [row];
     }
@@ -47,77 +48,6 @@ export class DataGrid extends LitElement {
       })
     );
   }
-
-  static styles = css`
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      column-gap: 8rem;
-      row-gap: 3rem;
-    }
-
-    .card {
-      position: relative;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      padding: 1rem;
-      background: white;
-      cursor: pointer;
-      user-select: none;
-      box-shadow: 0 1px 3px rgb(0 0 0 / 0.1);
-      transition: box-shadow 0.2s ease;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .card.selected {
-      background-color: var(--color-primary-light);
-      border-color: var(--color-primary);
-      box-shadow: 0 0 10px #339af0;
-    }
-
-    .card:hover {
-      box-shadow: 0 4px 8px rgb(0 0 0 / 0.15);
-    }
-
-    .card-header {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      display: flex;
-    }
-
-    .card-checkbox {
-      margin: 0;
-      height: 18px;
-      width: 18px;
-      accent-color: var(--color-primary);
-      border: 1px solid var(--color-text-secondary);
-      border-radius: 6px;
-    }
-
-    .card-field {
-      margin-bottom: 0.25rem;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .card-content {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.5rem;
-    }
-
-    .card-label {
-      font-weight: 300;
-      color: var(--color-text-secondary);
-    }
-
-    .card-value {
-      font-weight: 400;
-      color: var(--color-text);
-    }
-  `;
 
   render() {
     return html`

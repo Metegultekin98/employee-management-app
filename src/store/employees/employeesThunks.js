@@ -3,17 +3,26 @@ import {
   addEmployee,
   updateEmployee,
   deleteEmployee,
+  setEmployee,
 } from './employeesSlice';
 import {
   fetchEmployees,
   addEmployeeApi,
   updateEmployeeApi,
   deleteEmployeeApi,
+  fetchEmployeeById,
 } from '../../api/employees';
 
 export const loadEmployees = () => async (dispatch) => {
   const data = await fetchEmployees();
   dispatch(setEmployees(data));
+};
+
+export const loadEmployeeById = (id) => async (dispatch) => {
+  const employee = await fetchEmployeeById(id);
+  if (employee) {
+    dispatch(setEmployee(employee));
+  }
 };
 
 export const createEmployee = (employee) => async (dispatch) => {

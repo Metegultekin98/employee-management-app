@@ -7,7 +7,7 @@ if (!outlet) {
   throw new Error('Missing #outlet element in index.html');
 }
 
-const router = new Router(outlet);
+export const router = new Router(outlet);
 router.setRoutes(routes);
 
 const originalDefine = customElements.define.bind(customElements);

@@ -8,25 +8,23 @@ export const employeesSlice = createSlice({
   name: 'employees',
   initialState,
   reducers: {
+    setEmployees(state, action) {
+      state.employees = action.payload;
+    },
     addEmployee: {
       reducer(state, action) {
         state.employees.push(action.payload);
       },
       prepare(employee) {
         return {
-          payload: {
-            id: nanoid(),
-            ...employee,
-          },
+          payload: {id: nanoid(), ...employee},
         };
       },
     },
     updateEmployee(state, action) {
       const {id, changes} = action.payload;
-      const index = state.employees.findIndex((e) => e.id === id);
-      if (index !== -1) {
-        state.employees[index] = {...state.employees[index], ...changes};
-      }
+      const i = state.employees.findIndex((e) => e.id === id);
+      if (i !== -1) state.employees[i] = {...state.employees[i], ...changes};
     },
     deleteEmployee(state, action) {
       state.employees = state.employees.filter((e) => e.id !== action.payload);
@@ -34,6 +32,6 @@ export const employeesSlice = createSlice({
   },
 });
 
-export const {addEmployee, updateEmployee, deleteEmployee} =
+export const {setEmployees, addEmployee, updateEmployee, deleteEmployee} =
   employeesSlice.actions;
 export default employeesSlice.reducer;

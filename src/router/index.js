@@ -20,20 +20,21 @@ export const routes = [
           await import('../pages/employees/employees-page.js');
         },
       },
-      {
-        path: 'employees/add',
-        component: 'employee-add-page',
-        action: async () => {
-          await import('../pages/employees/employee-add-page.js');
-        },
-      },
-      {
-        path: 'employees/:id',
-        component: 'employee-edit-page',
-        action: async () => {
-          await import('../pages/employees/employee-edit-page.js');
-        },
-      },
+      // ,
+      // {
+      //   path: 'employees/add',
+      //   component: 'employee-add-page',
+      //   action: async () => {
+      //     await import('../pages/employees/employee-add-page.js');
+      //   },
+      // },
+      // {
+      //   path: 'employees/:id',
+      //   component: 'employee-edit-page',
+      //   action: async () => {
+      //     await import('../pages/employees/employee-edit-page.js');
+      //   },
+      // },
     ],
   },
 ];

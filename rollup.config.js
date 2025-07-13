@@ -8,12 +8,14 @@ import summary from 'rollup-plugin-summary';
 import {terser} from 'rollup-plugin-terser';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
+const nodeEnv = process.env.NODE_ENV || 'development';
 
 export default {
-  input: 'main.js',
+  input: 'src/main.js',
   output: {
-    file: 'main.bundled.js',
+    dir: 'dist',
     format: 'esm',
+    inlineDynamicImports: true,
   },
   onwarn(warning) {
     if (warning.code !== 'THIS_IS_UNDEFINED') {
@@ -21,7 +23,11 @@ export default {
     }
   },
   plugins: [
-    replace({preventAssignment: false, 'Reflect.decorate': 'undefined'}),
+    replace({
+      preventAssignment: true,
+      'Reflect.decorate': 'undefined',
+      'process.env.NODE_ENV': JSON.stringify(nodeEnv),
+    }),
     resolve(),
     /**
      * This minification setup serves the static site generation.

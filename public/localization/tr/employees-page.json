@@ -1,0 +1,20 @@
+{
+  "title": "Çalışan Listesi",
+  "headers": {
+    "firstName": "Ad",
+    "lastName": "Soyad",
+    "dateOfEmployment": "İşe Giriş Tarihi",
+    "dateOfBirth": "Doğum Tarihi",
+    "phone": "Telefon",
+    "email": "E-posta",
+    "department": "Departman",
+    "position": "Pozisyon",
+    "actions": "İşlemler"
+  },
+  "analytics": "Analitik",
+  "tech": "Teknoloji",
+  "modalDialog": {
+    "confirmDelete": "Emin misiniz?",
+    "confirmDeleteMessage": "Seçilen Çalışan kaydı {{name}} zamanları silinecektir"
+  }
+}

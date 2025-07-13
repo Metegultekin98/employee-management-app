@@ -15,10 +15,14 @@ export class MainLayout extends LitElement {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: sticky;
+      position: fixed;
+      z-index: 10;
+      top: 0;
+      left: 0;
+      right: 0;
     }
     main {
-      padding: 3.5rem 1rem 1rem 1rem;
+      padding: 4.5rem 2rem 2rem 2rem;
       background: var(--color-background);
       min-height: 100vh;
     }
@@ -42,7 +46,8 @@ export class MainLayout extends LitElement {
       font-weight: 500;
       display: flex;
       align-items: center;
-      opacity: 0.7;
+      opacity: 0.5;
+      transition: all 0.25s ease-in-out;
     }
     nav a:hover {
       opacity: 1;

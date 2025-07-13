@@ -51,17 +51,30 @@ function getNestedValue(obj, path) {
     return acc[key];
   }, obj);
 }
+/**
+ * Replace placeholders like {{name}} with actual values.
+ * @param str {string} The string with placeholders.
+ * @param params {Object} The values to inject.
+ * @returns {string}
+ */
+function interpolate(str, params) {
+  if (typeof str !== 'string') return str;
+  if (!params) return str;
+  return str.replace(/{{(.*?)}}/g, (_, key) => params[key.trim()] ?? '');
+}
 
 /**
- * Translate a path using the current language.
+ * Translate a path using the current language, with optional variables.
  * @param path {string} The path to translate (e.g., 'common.welcome').
- * @param lang {string} The language code (optional, defaults to the document's language).
- * @returns {Promise<string>} The translated string, or the original path if not found.
+ * @param params {Object} Optional parameters for interpolation.
+ * @param lang {string} Optional language code (defaults to current lang).
+ * @returns {Promise<string>}
  */
-export async function t(path, lang = getCurrentLang()) {
+export async function t(path, params = {}, lang = getCurrentLang()) {
   const [scope, ...restPath] = path.split('.');
   const fullKey = restPath.join('.');
 
   const data = await loadJsonFile(lang, scope);
-  return getNestedValue(data, fullKey) ?? `[${path}]`;
+  const raw = getNestedValue(data, fullKey);
+  return raw ? interpolate(raw, params) : `[${path}]`;
 }

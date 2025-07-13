@@ -31,9 +31,9 @@
         
       <h1>API</h1>
       
-        <h2>&lt;my-element></h2>
+        <h2>&lt;language-switcher></h2>
         <div>
-          An example element.
+          
         </div>
         
     <h3>Attributes</h3>
@@ -43,11 +43,15 @@
       </tr>
       
         <tr>
-          <td>name</td><td>The name to say "Hello" to.</td><td>string</td><td></td>
+          <td>lang</td><td></td><td>string</td><td></td>
         </tr>
       
         <tr>
-          <td>count</td><td>The number of times the button has been clicked.</td><td>number</td><td></td>
+          <td>getLang</td><td></td><td>function</td><td>Q</td>
+        </tr>
+      
+        <tr>
+          <td>setLang</td><td></td><td>function</td><td>Z</td>
         </tr>
       
     </table>
@@ -60,11 +64,27 @@
       </tr>
       
         <tr>
-          <td>name</td><td>name</td><td>The name to say "Hello" to.</td><td>string</td><td>'World'</td>
+          <td>_onLangChanged</td><td></td><td></td><td></td><td></td>
         </tr>
       
         <tr>
-          <td>count</td><td>count</td><td>The number of times the button has been clicked.</td><td>number</td><td>0</td>
+          <td>getLang</td><td>getLang</td><td></td><td>function</td><td>Q</td>
+        </tr>
+      
+        <tr>
+          <td>setLang</td><td>setLang</td><td></td><td>function</td><td>Z</td>
+        </tr>
+      
+        <tr>
+          <td>lang</td><td>lang</td><td></td><td>string</td><td></td>
+        </tr>
+      
+        <tr>
+          <td>renderOptions</td><td></td><td></td><td>object</td><td>{host:this}</td>
+        </tr>
+      
+        <tr>
+          <td>_$Do</td><td></td><td></td><td></td><td>void 0</td>
         </tr>
       
     </table>
@@ -77,7 +97,167 @@
       </tr>
       
         <tr>
-          <td>sayHello</td><td>
+          <td>toggleLanguage</td><td></td><td></td><td></td>
+        </tr>
+      
+        <tr>
+          <td>createRenderRoot</td><td></td><td></td><td></td>
+        </tr>
+      
+    </table>
+  
+            
+          
+        
+        
+        
+        <h2>&lt;main-layout></h2>
+        <div>
+          
+        </div>
+        
+    <h3>Attributes</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th><th>Type</th><th>Default</th>
+      </tr>
+      
+        <tr>
+          <td>navigation</td><td></td><td>object</td><td>{}</td>
+        </tr>
+      
+        <tr>
+          <td>t</td><td></td><td>function</td><td>tt</td>
+        </tr>
+      
+    </table>
+  
+        
+    <h3>Properties</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Attribute</th><th>Description</th><th>Type</th><th>Default</th>
+      </tr>
+      
+        <tr>
+          <td>navigation</td><td>navigation</td><td></td><td>object</td><td>{}</td>
+        </tr>
+      
+        <tr>
+          <td>t</td><td>t</td><td></td><td>function</td><td>tt</td>
+        </tr>
+      
+        <tr>
+          <td>renderOptions</td><td></td><td></td><td>object</td><td>{host:this}</td>
+        </tr>
+      
+        <tr>
+          <td>_$Do</td><td></td><td></td><td></td><td>void 0</td>
+        </tr>
+      
+    </table>
+    
+        
+    <h3>Methods</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Parameters</th><th>Description</th><th>Return</th>
+      </tr>
+      
+        <tr>
+          <td>loadTranslations</td><td></td><td></td><td></td>
+        </tr>
+      
+        <tr>
+          <td>createRenderRoot</td><td></td><td></td><td></td>
+        </tr>
+      
+    </table>
+  
+            
+          
+        
+        
+        
+        <h2>&lt;data-table></h2>
+        <div>
+          
+        </div>
+        
+    <h3>Attributes</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th><th>Type</th><th>Default</th>
+      </tr>
+      
+        <tr>
+          <td>columns</td><td></td><td>array</td><td>[]</td>
+        </tr>
+      
+        <tr>
+          <td>rows</td><td></td><td>array</td><td>[]</td>
+        </tr>
+      
+        <tr>
+          <td>selectedRows</td><td></td><td>array</td><td>[]</td>
+        </tr>
+      
+        <tr>
+          <td>selectable</td><td></td><td>boolean</td><td>!1</td>
+        </tr>
+      
+        <tr>
+          <td>multiSelect</td><td></td><td>boolean</td><td>!1</td>
+        </tr>
+      
+    </table>
+  
+        
+    <h3>Properties</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Attribute</th><th>Description</th><th>Type</th><th>Default</th>
+      </tr>
+      
+        <tr>
+          <td>columns</td><td>columns</td><td></td><td>array</td><td>[]</td>
+        </tr>
+      
+        <tr>
+          <td>rows</td><td>rows</td><td></td><td>array</td><td>[]</td>
+        </tr>
+      
+        <tr>
+          <td>selectedRows</td><td>selectedRows</td><td></td><td>array</td><td>[]</td>
+        </tr>
+      
+        <tr>
+          <td>selectable</td><td>selectable</td><td></td><td>boolean</td><td>!1</td>
+        </tr>
+      
+        <tr>
+          <td>multiSelect</td><td>multiSelect</td><td></td><td>boolean</td><td>!1</td>
+        </tr>
+      
+        <tr>
+          <td>renderOptions</td><td></td><td></td><td>object</td><td>{host:this}</td>
+        </tr>
+      
+        <tr>
+          <td>_$Do</td><td></td><td></td><td></td><td>void 0</td>
+        </tr>
+      
+    </table>
+    
+        
+    <h3>Methods</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Parameters</th><th>Description</th><th>Return</th>
+      </tr>
+      
+        <tr>
+          <td>isSelected</td><td>
     
     <table>
       <tr>
@@ -85,11 +265,31 @@
       </tr>
       
         <tr>
-          <td>name</td><td>The name to say "Hello" to</td><td>string</td>
+          <td>t</td><td></td><td></td>
         </tr>
       
     </table>
-  </td><td>Formats a greeting</td><td>string</td>
+  </td><td></td><td></td>
+        </tr>
+      
+        <tr>
+          <td>toggleRow</td><td>
+    
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th><th>Type</th>
+      </tr>
+      
+        <tr>
+          <td>t</td><td></td><td></td>
+        </tr>
+      
+    </table>
+  </td><td></td><td></td>
+        </tr>
+      
+        <tr>
+          <td>createRenderRoot</td><td></td><td></td><td></td>
         </tr>
       
     </table>
@@ -102,37 +302,1197 @@
       </tr>
       
         <tr>
-          <td>count-changed</td><td>Indicates when the count changes</td>
+          <td>selection-changed</td><td></td>
         </tr>
       
     </table>
       
+          
         
-    <h3>Slots</h3>
+        
+        
+        <h2>&lt;employees-page></h2>
+        <div>
+          
+        </div>
+        
+    <h3>Attributes</h3>
     <table>
       <tr>
-        <th>Name</th><th>Description</th>
+        <th>Name</th><th>Description</th><th>Type</th><th>Default</th>
       </tr>
       
         <tr>
-          <td>(default)</td><td>This element has a slot</td>
+          <td>translation</td><td></td><td>object</td><td>{}</td>
+        </tr>
+      
+        <tr>
+          <td>t</td><td></td><td>function</td><td>tt</td>
+        </tr>
+      
+        <tr>
+          <td>employees</td><td></td><td>array</td><td>[]</td>
+        </tr>
+      
+    </table>
+  
+        
+    <h3>Properties</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Attribute</th><th>Description</th><th>Type</th><th>Default</th>
+      </tr>
+      
+        <tr>
+          <td>translation</td><td>translation</td><td></td><td>object</td><td>{}</td>
+        </tr>
+      
+        <tr>
+          <td>t</td><td>t</td><td></td><td>function</td><td>tt</td>
+        </tr>
+      
+        <tr>
+          <td>employees</td><td>employees</td><td></td><td>array</td><td>[]</td>
         </tr>
       
     </table>
     
         
-    <h3>CSS Shadow Parts</h3>
+    <h3>Methods</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Parameters</th><th>Description</th><th>Return</th>
+      </tr>
+      
+        <tr>
+          <td>loadTranslations</td><td></td><td></td><td></td>
+        </tr>
+      
+    </table>
+  
+            
+          
+        
+        
+        
+        <h2>&lt;data-table></h2>
+        <div>
+          
+        </div>
+        
+    <h3>Attributes</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th><th>Type</th><th>Default</th>
+      </tr>
+      
+        <tr>
+          <td>columns</td><td></td><td>array</td><td>[]</td>
+        </tr>
+      
+        <tr>
+          <td>rows</td><td></td><td>array</td><td>[]</td>
+        </tr>
+      
+        <tr>
+          <td>selectedRows</td><td></td><td>array</td><td>[]</td>
+        </tr>
+      
+        <tr>
+          <td>selectable</td><td></td><td>boolean</td><td>false</td>
+        </tr>
+      
+        <tr>
+          <td>multiSelect</td><td></td><td>boolean</td><td>false</td>
+        </tr>
+      
+    </table>
+  
+        
+    <h3>Properties</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Attribute</th><th>Description</th><th>Type</th><th>Default</th>
+      </tr>
+      
+        <tr>
+          <td>columns</td><td>columns</td><td></td><td>array</td><td>[]</td>
+        </tr>
+      
+        <tr>
+          <td>rows</td><td>rows</td><td></td><td>array</td><td>[]</td>
+        </tr>
+      
+        <tr>
+          <td>selectedRows</td><td>selectedRows</td><td></td><td>array</td><td>[]</td>
+        </tr>
+      
+        <tr>
+          <td>selectable</td><td>selectable</td><td></td><td>boolean</td><td>false</td>
+        </tr>
+      
+        <tr>
+          <td>multiSelect</td><td>multiSelect</td><td></td><td>boolean</td><td>false</td>
+        </tr>
+      
+    </table>
+    
+        
+    <h3>Methods</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Parameters</th><th>Description</th><th>Return</th>
+      </tr>
+      
+        <tr>
+          <td>isSelected</td><td>
+    
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th><th>Type</th>
+      </tr>
+      
+        <tr>
+          <td>row</td><td></td><td></td>
+        </tr>
+      
+    </table>
+  </td><td></td><td></td>
+        </tr>
+      
+        <tr>
+          <td>toggleRow</td><td>
+    
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th><th>Type</th>
+      </tr>
+      
+        <tr>
+          <td>row</td><td></td><td></td>
+        </tr>
+      
+    </table>
+  </td><td></td><td></td>
+        </tr>
+      
+        <tr>
+          <td>toggleSelectAll</td><td>
+    
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th><th>Type</th>
+      </tr>
+      
+        <tr>
+          <td>e</td><td></td><td></td>
+        </tr>
+      
+    </table>
+  </td><td></td><td></td>
+        </tr>
+      
+        <tr>
+          <td>renderHeader</td><td></td><td></td><td></td>
+        </tr>
+      
+        <tr>
+          <td>renderBody</td><td></td><td></td><td></td>
+        </tr>
+      
+    </table>
+  
+        
+    <h3>Events</h3>
     <table>
       <tr>
         <th>Name</th><th>Description</th>
       </tr>
       
         <tr>
-          <td>button</td><td>The button</td>
+          <td>selection-changed</td><td></td>
+        </tr>
+      
+    </table>
+      
+          
+        
+        
+        
+        <h2>&lt;employee-form></h2>
+        <div>
+          
+        </div>
+        
+    <h3>Attributes</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th><th>Type</th><th>Default</th>
+      </tr>
+      
+        <tr>
+          <td>value</td><td></td><td>object</td><td>{}</td>
+        </tr>
+      
+        <tr>
+          <td>translation</td><td></td><td>object</td><td>{}</td>
+        </tr>
+      
+        <tr>
+          <td>common</td><td></td><td>object</td><td>{}</td>
+        </tr>
+      
+        <tr>
+          <td>t</td><td></td><td>function</td><td>defaultT</td>
         </tr>
       
     </table>
   
+        
+    <h3>Properties</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Attribute</th><th>Description</th><th>Type</th><th>Default</th>
+      </tr>
+      
+        <tr>
+          <td>handlePhoneInput</td><td></td><td></td><td></td><td></td>
+        </tr>
+      
+        <tr>
+          <td>value</td><td>value</td><td></td><td>object</td><td>{}</td>
+        </tr>
+      
+        <tr>
+          <td>_errors</td><td></td><td></td><td>object</td><td>{}</td>
+        </tr>
+      
+        <tr>
+          <td>_positions</td><td></td><td></td><td>array</td><td>['Junior', 'Medior', 'Senior']</td>
+        </tr>
+      
+        <tr>
+          <td>translation</td><td>translation</td><td></td><td>object</td><td>{}</td>
+        </tr>
+      
+        <tr>
+          <td>common</td><td>common</td><td></td><td>object</td><td>{}</td>
+        </tr>
+      
+        <tr>
+          <td>t</td><td>t</td><td></td><td>function</td><td>defaultT</td>
+        </tr>
+      
+    </table>
+    
+        
+    <h3>Methods</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Parameters</th><th>Description</th><th>Return</th>
+      </tr>
+      
+        <tr>
+          <td>loadTranslations</td><td></td><td></td><td></td>
+        </tr>
+      
+        <tr>
+          <td>validate</td><td>
+    
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th><th>Type</th>
+      </tr>
+      
+        <tr>
+          <td>formData</td><td></td><td></td>
+        </tr>
+      
+    </table>
+  </td><td></td><td></td>
+        </tr>
+      
+        <tr>
+          <td>handleSubmit</td><td>
+    
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th><th>Type</th>
+      </tr>
+      
+        <tr>
+          <td>e</td><td></td><td></td>
+        </tr>
+      
+    </table>
+  </td><td></td><td></td>
+        </tr>
+      
+        <tr>
+          <td>renderInput</td><td>
+    
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th><th>Type</th>
+      </tr>
+      
+        <tr>
+          <td>name</td><td></td><td></td>
+        </tr>
+      
+        <tr>
+          <td>label</td><td></td><td></td>
+        </tr>
+      
+        <tr>
+          <td>value</td><td></td><td></td>
+        </tr>
+      
+        <tr>
+          <td>type</td><td></td><td></td>
+        </tr>
+      
+    </table>
+  </td><td></td><td></td>
+        </tr>
+      
+    </table>
+  
+        
+    <h3>Events</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th>
+      </tr>
+      
+        <tr>
+          <td>form-submit</td><td></td>
+        </tr>
+      
+    </table>
+      
+          
+        
+        
+        
+        <h2>&lt;language-switcher></h2>
+        <div>
+          
+        </div>
+        
+    <h3>Attributes</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th><th>Type</th><th>Default</th>
+      </tr>
+      
+        <tr>
+          <td>lang</td><td></td><td>string</td><td></td>
+        </tr>
+      
+    </table>
+  
+        
+    <h3>Properties</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Attribute</th><th>Description</th><th>Type</th><th>Default</th>
+      </tr>
+      
+        <tr>
+          <td>#onLangChanged</td><td></td><td></td><td></td><td></td>
+        </tr>
+      
+        <tr>
+          <td>getLang</td><td></td><td></td><td></td><td>defaultGetLang</td>
+        </tr>
+      
+        <tr>
+          <td>setLang</td><td></td><td></td><td></td><td>defaultSetLang</td>
+        </tr>
+      
+        <tr>
+          <td>lang</td><td>lang</td><td></td><td>string</td><td></td>
+        </tr>
+      
+    </table>
+    
+        
+    <h3>Methods</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Parameters</th><th>Description</th><th>Return</th>
+      </tr>
+      
+        <tr>
+          <td>toggleLanguage</td><td></td><td></td><td></td>
+        </tr>
+      
+    </table>
+  
+            
+          
+        
+        
+        
+        <h2>&lt;pagination-controls></h2>
+        <div>
+          
+        </div>
+        
+    <h3>Attributes</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th><th>Type</th><th>Default</th>
+      </tr>
+      
+        <tr>
+          <td>totalItems</td><td></td><td>number</td><td>0</td>
+        </tr>
+      
+        <tr>
+          <td>itemsPerPage</td><td></td><td>number</td><td>10</td>
+        </tr>
+      
+        <tr>
+          <td>currentPage</td><td></td><td>number</td><td>1</td>
+        </tr>
+      
+    </table>
+  
+        
+    <h3>Properties</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Attribute</th><th>Description</th><th>Type</th><th>Default</th>
+      </tr>
+      
+        <tr>
+          <td>totalPages</td><td></td><td></td><td></td><td></td>
+        </tr>
+      
+        <tr>
+          <td>totalItems</td><td>totalItems</td><td></td><td>number</td><td>0</td>
+        </tr>
+      
+        <tr>
+          <td>itemsPerPage</td><td>itemsPerPage</td><td></td><td>number</td><td>10</td>
+        </tr>
+      
+        <tr>
+          <td>currentPage</td><td>currentPage</td><td></td><td>number</td><td>1</td>
+        </tr>
+      
+    </table>
+    
+        
+    <h3>Methods</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Parameters</th><th>Description</th><th>Return</th>
+      </tr>
+      
+        <tr>
+          <td>changePage</td><td>
+    
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th><th>Type</th>
+      </tr>
+      
+        <tr>
+          <td>page</td><td></td><td></td>
+        </tr>
+      
+    </table>
+  </td><td></td><td></td>
+        </tr>
+      
+    </table>
+  
+        
+    <h3>Events</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th>
+      </tr>
+      
+        <tr>
+          <td>page-changed</td><td></td>
+        </tr>
+      
+    </table>
+      
+          
+        
+        
+        
+        <h2>&lt;data-grid></h2>
+        <div>
+          
+        </div>
+        
+    <h3>Attributes</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th><th>Type</th><th>Default</th>
+      </tr>
+      
+        <tr>
+          <td>columns</td><td></td><td>array</td><td>[]</td>
+        </tr>
+      
+        <tr>
+          <td>rows</td><td></td><td>array</td><td>[]</td>
+        </tr>
+      
+        <tr>
+          <td>selectedRows</td><td></td><td>array</td><td>[]</td>
+        </tr>
+      
+        <tr>
+          <td>selectable</td><td></td><td>boolean</td><td>false</td>
+        </tr>
+      
+        <tr>
+          <td>multiSelect</td><td></td><td>boolean</td><td>false</td>
+        </tr>
+      
+    </table>
+  
+        
+    <h3>Properties</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Attribute</th><th>Description</th><th>Type</th><th>Default</th>
+      </tr>
+      
+        <tr>
+          <td>columns</td><td>columns</td><td></td><td>array</td><td>[]</td>
+        </tr>
+      
+        <tr>
+          <td>rows</td><td>rows</td><td></td><td>array</td><td>[]</td>
+        </tr>
+      
+        <tr>
+          <td>selectedRows</td><td>selectedRows</td><td></td><td>array</td><td>[]</td>
+        </tr>
+      
+        <tr>
+          <td>selectable</td><td>selectable</td><td></td><td>boolean</td><td>false</td>
+        </tr>
+      
+        <tr>
+          <td>multiSelect</td><td>multiSelect</td><td></td><td>boolean</td><td>false</td>
+        </tr>
+      
+    </table>
+    
+        
+    <h3>Methods</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Parameters</th><th>Description</th><th>Return</th>
+      </tr>
+      
+        <tr>
+          <td>isSelected</td><td>
+    
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th><th>Type</th>
+      </tr>
+      
+        <tr>
+          <td>row</td><td></td><td></td>
+        </tr>
+      
+    </table>
+  </td><td></td><td></td>
+        </tr>
+      
+        <tr>
+          <td>toggleRow</td><td>
+    
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th><th>Type</th>
+      </tr>
+      
+        <tr>
+          <td>row</td><td></td><td></td>
+        </tr>
+      
+    </table>
+  </td><td></td><td></td>
+        </tr>
+      
+    </table>
+  
+        
+    <h3>Events</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th>
+      </tr>
+      
+        <tr>
+          <td>selection-changed</td><td></td>
+        </tr>
+      
+    </table>
+      
+          
+        
+        
+        
+        <h2>&lt;modal-dialog></h2>
+        <div>
+          
+        </div>
+        
+    <h3>Attributes</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th><th>Type</th><th>Default</th>
+      </tr>
+      
+        <tr>
+          <td>open</td><td></td><td>boolean</td><td>false</td>
+        </tr>
+      
+        <tr>
+          <td>title</td><td></td><td>string</td><td>''</td>
+        </tr>
+      
+    </table>
+  
+        
+    <h3>Properties</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Attribute</th><th>Description</th><th>Type</th><th>Default</th>
+      </tr>
+      
+        <tr>
+          <td>open</td><td>open</td><td></td><td>boolean</td><td>false</td>
+        </tr>
+      
+        <tr>
+          <td>title</td><td>title</td><td></td><td>string</td><td>''</td>
+        </tr>
+      
+    </table>
+    
+        
+    <h3>Methods</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Parameters</th><th>Description</th><th>Return</th>
+      </tr>
+      
+        <tr>
+          <td>close</td><td></td><td></td><td></td>
+        </tr>
+      
+    </table>
+  
+        
+    <h3>Events</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th>
+      </tr>
+      
+        <tr>
+          <td>modal-closed</td><td></td>
+        </tr>
+      
+    </table>
+      
+          
+        
+        
+        
+        <h2>&lt;main-layout></h2>
+        <div>
+          
+        </div>
+        
+    <h3>Attributes</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th><th>Type</th><th>Default</th>
+      </tr>
+      
+        <tr>
+          <td>navigation</td><td></td><td>object</td><td>{}</td>
+        </tr>
+      
+        <tr>
+          <td>t</td><td></td><td>function</td><td>defaultT</td>
+        </tr>
+      
+        <tr>
+          <td>currentPath</td><td></td><td>string</td><td></td>
+        </tr>
+      
+    </table>
+  
+        
+    <h3>Properties</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Attribute</th><th>Description</th><th>Type</th><th>Default</th>
+      </tr>
+      
+        <tr>
+          <td>navigation</td><td>navigation</td><td></td><td>object</td><td>{}</td>
+        </tr>
+      
+        <tr>
+          <td>t</td><td>t</td><td></td><td>function</td><td>defaultT</td>
+        </tr>
+      
+        <tr>
+          <td>currentPath</td><td>currentPath</td><td></td><td>string</td><td></td>
+        </tr>
+      
+    </table>
+    
+        
+    <h3>Methods</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Parameters</th><th>Description</th><th>Return</th>
+      </tr>
+      
+        <tr>
+          <td>loadTranslations</td><td></td><td></td><td></td>
+        </tr>
+      
+    </table>
+  
+            
+          
+        
+        
+        
+        <h2>&lt;employee-add-page></h2>
+        <div>
+          
+        </div>
+        
+    <h3>Attributes</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th><th>Type</th><th>Default</th>
+      </tr>
+      
+        <tr>
+          <td>employee</td><td></td><td>object</td><td>{}</td>
+        </tr>
+      
+        <tr>
+          <td>translation</td><td></td><td>object</td><td>{}</td>
+        </tr>
+      
+        <tr>
+          <td>common</td><td></td><td>object</td><td>{}</td>
+        </tr>
+      
+        <tr>
+          <td>t</td><td></td><td>function</td><td>defaultT</td>
+        </tr>
+      
+    </table>
+  
+        
+    <h3>Properties</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Attribute</th><th>Description</th><th>Type</th><th>Default</th>
+      </tr>
+      
+        <tr>
+          <td>employee</td><td>employee</td><td></td><td>object</td><td>{}</td>
+        </tr>
+      
+        <tr>
+          <td>translation</td><td>translation</td><td></td><td>object</td><td>{}</td>
+        </tr>
+      
+        <tr>
+          <td>common</td><td>common</td><td></td><td>object</td><td>{}</td>
+        </tr>
+      
+        <tr>
+          <td>t</td><td>t</td><td></td><td>function</td><td>defaultT</td>
+        </tr>
+      
+    </table>
+    
+        
+    <h3>Methods</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Parameters</th><th>Description</th><th>Return</th>
+      </tr>
+      
+        <tr>
+          <td>loadTranslations</td><td></td><td></td><td></td>
+        </tr>
+      
+        <tr>
+          <td>handleSubmit</td><td>
+    
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th><th>Type</th>
+      </tr>
+      
+        <tr>
+          <td>evt</td><td></td><td></td>
+        </tr>
+      
+    </table>
+  </td><td></td><td></td>
+        </tr>
+      
+    </table>
+  
+            
+          
+        
+        
+        
+        <h2>&lt;employee-edit-page></h2>
+        <div>
+          
+        </div>
+        
+    <h3>Attributes</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th><th>Type</th><th>Default</th>
+      </tr>
+      
+        <tr>
+          <td>employee</td><td></td><td>object</td><td>{}</td>
+        </tr>
+      
+        <tr>
+          <td>translation</td><td></td><td>object</td><td>{}</td>
+        </tr>
+      
+        <tr>
+          <td>common</td><td></td><td>object</td><td>{}</td>
+        </tr>
+      
+        <tr>
+          <td>t</td><td></td><td>function</td><td>defaultT</td>
+        </tr>
+      
+        <tr>
+          <td>id</td><td></td><td>string</td><td>''</td>
+        </tr>
+      
+    </table>
+  
+        
+    <h3>Properties</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Attribute</th><th>Description</th><th>Type</th><th>Default</th>
+      </tr>
+      
+        <tr>
+          <td>employee</td><td>employee</td><td></td><td>object</td><td>{}</td>
+        </tr>
+      
+        <tr>
+          <td>translation</td><td>translation</td><td></td><td>object</td><td>{}</td>
+        </tr>
+      
+        <tr>
+          <td>common</td><td>common</td><td></td><td>object</td><td>{}</td>
+        </tr>
+      
+        <tr>
+          <td>t</td><td>t</td><td></td><td>function</td><td>defaultT</td>
+        </tr>
+      
+        <tr>
+          <td>id</td><td>id</td><td></td><td>string</td><td>''</td>
+        </tr>
+      
+    </table>
+    
+        
+    <h3>Methods</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Parameters</th><th>Description</th><th>Return</th>
+      </tr>
+      
+        <tr>
+          <td>onBeforeEnter</td><td>
+    
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th><th>Type</th>
+      </tr>
+      
+        <tr>
+          <td>location</td><td></td><td></td>
+        </tr>
+      
+    </table>
+  </td><td></td><td></td>
+        </tr>
+      
+        <tr>
+          <td>stateChanged</td><td>
+    
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th><th>Type</th>
+      </tr>
+      
+        <tr>
+          <td>state</td><td></td><td></td>
+        </tr>
+      
+    </table>
+  </td><td></td><td></td>
+        </tr>
+      
+        <tr>
+          <td>loadTranslations</td><td></td><td></td><td></td>
+        </tr>
+      
+        <tr>
+          <td>handleSubmit</td><td>
+    
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th><th>Type</th>
+      </tr>
+      
+        <tr>
+          <td>evt</td><td></td><td></td>
+        </tr>
+      
+    </table>
+  </td><td></td><td></td>
+        </tr>
+      
+    </table>
+  
+            
+          
+        
+        
+        
+        <h2>&lt;employees-page></h2>
+        <div>
+          
+        </div>
+        
+    <h3>Attributes</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th><th>Type</th><th>Default</th>
+      </tr>
+      
+        <tr>
+          <td>translation</td><td></td><td>object</td><td>{}</td>
+        </tr>
+      
+        <tr>
+          <td>common</td><td></td><td>object</td><td>{}</td>
+        </tr>
+      
+        <tr>
+          <td>t</td><td></td><td>function</td><td>defaultT</td>
+        </tr>
+      
+        <tr>
+          <td>employees</td><td></td><td>array</td><td>[]</td>
+        </tr>
+      
+        <tr>
+          <td>view</td><td></td><td>string</td><td>'list'</td>
+        </tr>
+      
+        <tr>
+          <td>selectedRows</td><td></td><td>array</td><td>[]</td>
+        </tr>
+      
+        <tr>
+          <td>currentPage</td><td></td><td>number</td><td>1</td>
+        </tr>
+      
+        <tr>
+          <td>isModalOpen</td><td></td><td>boolean</td><td>false</td>
+        </tr>
+      
+        <tr>
+          <td>activeRow</td><td></td><td>null</td><td>null</td>
+        </tr>
+      
+        <tr>
+          <td>modalMessage</td><td></td><td>string</td><td>''</td>
+        </tr>
+      
+    </table>
+  
+        
+    <h3>Properties</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Attribute</th><th>Description</th><th>Type</th><th>Default</th>
+      </tr>
+      
+        <tr>
+          <td>rowsPerPage</td><td></td><td></td><td></td><td></td>
+        </tr>
+      
+        <tr>
+          <td>paginatedEmployees</td><td></td><td></td><td></td><td></td>
+        </tr>
+      
+        <tr>
+          <td>translation</td><td>translation</td><td></td><td>object</td><td>{}</td>
+        </tr>
+      
+        <tr>
+          <td>common</td><td>common</td><td></td><td>object</td><td>{}</td>
+        </tr>
+      
+        <tr>
+          <td>t</td><td>t</td><td></td><td>function</td><td>defaultT</td>
+        </tr>
+      
+        <tr>
+          <td>employees</td><td>employees</td><td></td><td>array</td><td>[]</td>
+        </tr>
+      
+        <tr>
+          <td>selectedRows</td><td>selectedRows</td><td></td><td>array</td><td>[]</td>
+        </tr>
+      
+        <tr>
+          <td>activeRow</td><td>activeRow</td><td></td><td>null</td><td>null</td>
+        </tr>
+      
+        <tr>
+          <td>view</td><td>view</td><td></td><td>string</td><td>'list'</td>
+        </tr>
+      
+        <tr>
+          <td>currentPage</td><td>currentPage</td><td></td><td>number</td><td>1</td>
+        </tr>
+      
+        <tr>
+          <td>isModalOpen</td><td>isModalOpen</td><td></td><td>boolean</td><td>false</td>
+        </tr>
+      
+        <tr>
+          <td>modalMessage</td><td>modalMessage</td><td></td><td>string</td><td>''</td>
+        </tr>
+      
+    </table>
+    
+        
+    <h3>Methods</h3>
+    <table>
+      <tr>
+        <th>Name</th><th>Parameters</th><th>Description</th><th>Return</th>
+      </tr>
+      
+        <tr>
+          <td>stateChanged</td><td>
+    
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th><th>Type</th>
+      </tr>
+      
+        <tr>
+          <td>state</td><td></td><td></td>
+        </tr>
+      
+    </table>
+  </td><td></td><td></td>
+        </tr>
+      
+        <tr>
+          <td>loadTranslations</td><td></td><td></td><td></td>
+        </tr>
+      
+        <tr>
+          <td>handleSelectionChanged</td><td>
+    
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th><th>Type</th>
+      </tr>
+      
+        <tr>
+          <td>event</td><td></td><td></td>
+        </tr>
+      
+    </table>
+  </td><td></td><td></td>
+        </tr>
+      
+        <tr>
+          <td>handlePageChange</td><td>
+    
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th><th>Type</th>
+      </tr>
+      
+        <tr>
+          <td>e</td><td></td><td></td>
+        </tr>
+      
+    </table>
+  </td><td></td><td></td>
+        </tr>
+      
+        <tr>
+          <td>handleDelete</td><td></td><td></td><td></td>
+        </tr>
+      
+        <tr>
+          <td>renderViewToggles</td><td></td><td></td><td></td>
+        </tr>
+      
+        <tr>
+          <td>renderTableOrGrid</td><td>
+    
+    <table>
+      <tr>
+        <th>Name</th><th>Description</th><th>Type</th>
+      </tr>
+      
+        <tr>
+          <td>columns</td><td></td><td></td>
+        </tr>
+      
+    </table>
+  </td><td></td><td></td>
+        </tr>
+      
+    </table>
+  
+            
+          
+        
         
         
     

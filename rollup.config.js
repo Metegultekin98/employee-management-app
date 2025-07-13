@@ -13,8 +13,8 @@ const nodeEnv = process.env.NODE_ENV || 'development';
 export default {
   input: 'src/main.js',
   output: {
-    dir: 'dist',
-    format: 'esm',
+    file: 'docs/main.bundled.js',
+    format: 'es',
     inlineDynamicImports: true,
   },
   onwarn(warning) {

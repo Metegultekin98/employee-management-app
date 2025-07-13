@@ -1,5 +1,5 @@
 import {fixture, html, expect, waitUntil} from '@open-wc/testing';
-import '../../src/layouts/main-layout.js';
+import '../../src/layouts/main-layout/main-layout.js';
 
 describe('<main-layout>', () => {
   const fakeT = async (key) => {

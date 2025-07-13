@@ -27,7 +27,6 @@
     "test:dev": "wtr --config web-test-runner.config.mjs --coverage",
     "test:prod": "MODE=prod wtr --config web-test-runner.config.mjs --coverage",
     "test:watch": "wtr --watch",
-    "test:coverage": "wtr --coverage",
     "test:prod:watch": "MODE=prod wtr --watch",
     "checksize": "rollup -c ; cat main.bundled.js | gzip -9 | wc -c ; rm main.bundled.js"
   },

@@ -12,6 +12,7 @@ import {store} from '../../../store/index.js';
 import {connect} from 'pwa-helpers';
 import {router} from '../../../main.js';
 import {employeesPageStyles} from './employees-page.styles.js';
+import {formatPhone} from '../../../utils/formatPhone.js';
 
 export class EmployeesPage extends connect(store)(LitElement) {
   static properties = {
@@ -184,7 +185,13 @@ export class EmployeesPage extends connect(store)(LitElement) {
           });
         },
       },
-      {key: 'phone', label: translate.headers.phone},
+      {
+        key: 'phone',
+        label: translate.headers.phone,
+        render: (row) => {
+          return formatPhone(row.phone);
+        },
+      },
       {key: 'email', label: translate.headers.email},
       {key: 'department', label: translate.headers.department},
       {key: 'position', label: translate.headers.position},

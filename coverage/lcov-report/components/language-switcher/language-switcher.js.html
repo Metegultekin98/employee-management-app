@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>68/68</span>
+                <span class='fraction'>60/60</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>12/12</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>68/68</span>
+                <span class='fraction'>60/60</span>
             </div>
         
             
@@ -123,15 +123,7 @@
 <a name='L58'></a><a href='#L58'>58</a>
 <a name='L59'></a><a href='#L59'>59</a>
 <a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L61'></a><a href='#L61'>61</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -146,15 +138,7 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -177,14 +161,14 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
@@ -203,27 +187,19 @@
   getCurrentLang as defaultGetLang,
   setLang as defaultSetLang,
 } from '../../localization/index.js';
-import {css, html, LitElement} from 'lit';
+import {html, LitElement} from 'lit';
+import {languageSwitcherStyle} from './language-switcher.styles.js';
 &nbsp;
 export class LanguageSwitcher extends LitElement {
   static properties = {
     lang: {type: String},
-    getLang: {type: Function},
-    setLang: {type: Function},
   };
 &nbsp;
-  static styles = css`
-    button {
-      border: none;
-      background: white;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  `;
+  static styles = languageSwitcherStyle;
+&nbsp;
+  #onLangChanged = (e) =&gt; {
+    this.lang = e.detail;
+  };
 &nbsp;
   constructor() {
     super();
@@ -235,29 +211,29 @@ export class LanguageSwitcher extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.lang = this.getLang();
-    window.addEventListener('lang-changed', this._onLangChanged);
+    window.addEventListener('lang-changed', this.#onLangChanged);
   }
 &nbsp;
   disconnectedCallback() {
-    window.removeEventListener('lang-changed', this._onLangChanged);
+    window.removeEventListener('lang-changed', this.#onLangChanged);
     super.disconnectedCallback();
   }
 &nbsp;
-  _onLangChanged = (e) =&gt; {
-    this.lang = e.detail;
-  };
-&nbsp;
   toggleLanguage() {
-    const newLang = this.lang === 'en' ? 'tr' : 'en';
-    this.setLang(newLang);
+    const langs = ['en', 'tr'];
+    const currentIndex = langs.indexOf(this.lang);
+    const nextLang = langs[(currentIndex + 1) % langs.length];
+    this.setLang(nextLang);
   }
 &nbsp;
   render() {
+    const otherLang = this.lang === 'en' ? 'tr' : 'en';
+&nbsp;
     return html`
       &lt;button @click=${this.toggleLanguage}&gt;
         &lt;img
-          src="/public/icons/flags/${this.lang === 'en' ? 'tr' : 'en'}.png"
-          alt="Language Icon"
+          src="/public/icons/flags/${otherLang}.png"
+          alt="Switch to ${otherLang}"
           width="24"
           height="16"
         /&gt;
@@ -274,7 +250,7 @@ customElements.define('language-switcher', LanguageSwitcher);
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-07-12T16:17:21.893Z
+                at 2025-07-13T13:29:41.896Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

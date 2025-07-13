@@ -1,7 +1,6 @@
 import {LitElement, html} from 'lit';
 import {t as defaultT} from '../../localization/index.js';
 import {employeeFormStyles} from './employee-form.styles.js';
-import {validateEmployeeForm} from '../../utils/validate.js';
 import {formatPhone} from '../../utils/formatPhone.js';
 
 export class EmployeeForm extends LitElement {
@@ -48,7 +47,41 @@ export class EmployeeForm extends LitElement {
   }
 
   validate(formData) {
-    const errors = validateEmployeeForm(formData, this.translation);
+    const errors = {};
+    if (!formData.firstName?.trim())
+      errors.firstName =
+        this.translation.inputs.firstName + this.translation.form.required;
+    if (!formData.lastName?.trim())
+      errors.lastName =
+        this.translation.inputs.lastName + this.translation.form.required;
+    if (!formData.dateOfEmployment)
+      errors.dateOfEmployment =
+        this.translation.inputs.dateOfEmployment +
+        this.translation.form.required;
+    if (!formData.dateOfBirth)
+      errors.dateOfBirth =
+        this.translation.inputs.dateOfBirth + this.translation.form.required;
+
+    const rawPhone = formData.phone?.replace(/\s+/g, '') || '';
+
+    if (!rawPhone)
+      errors.phone =
+        this.translation.inputs.phone + this.translation.form.required;
+    else if (!/^\+?\d{10,15}$/.test(rawPhone))
+      errors.phone = this.translation.form.invalidPhone;
+
+    if (!formData.email?.trim())
+      errors.email =
+        this.translation.inputs.email + this.translation.form.required;
+    else if (!/\S+@\S+\.\S+/.test(formData.email))
+      errors.email = this.translation.form.invalidEmail;
+
+    if (!formData.department?.trim())
+      errors.department =
+        this.translation.inputs.department + this.translation.form.required;
+    if (!formData.position)
+      errors.position =
+        this.translation.inputs.position + this.translation.form.required;
 
     this._errors = errors;
     this.requestUpdate();

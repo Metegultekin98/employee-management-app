@@ -91,11 +91,17 @@ export default {
   nodeResolve: {exportConditions: mode === 'dev' ? ['development'] : []},
   preserveSymlinks: true,
   browsers: commandLineBrowsers ?? Object.values(browsers),
+  setupFiles: ['test/setup.js'],
   testFramework: {
     // https://mochajs.org/api/mocha
     config: {
       ui: 'bdd',
       timeout: '60000',
+    },
+  },
+  defineGlobals: {
+    process: {
+      env: {NODE_ENV: 'test'},
     },
   },
   plugins: [
